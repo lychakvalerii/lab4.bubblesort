@@ -1,17 +1,26 @@
 #include <iostream>
 
-// Робимо анонс функції
-void bubbleSort(int arr[], int n);
+//  Функція сортування 
+void bubbleSort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
 
+//головна функція main
 int main() {
-  
     std::setlocale(LC_ALL, "UKRAINIAN");
 
     int n;
     std::cout << "Введіть розмір масиву: ";
     std::cin >> n;
 
-    // Створюємо динамічний масив
     int* arr = new int[n];
 
     std::cout << "Введіть " << n << " елементів масиву:\n";
@@ -26,17 +35,15 @@ int main() {
     }
     std::cout << "\n";
 
-   
-  // викликаємо функцію
+    // Викликаємо сортування
     bubbleSort(arr, n);
 
-    std::cout << "\nВідсортований масив: ";
+    std::cout << "Відсортований масив: ";
     for (int i = 0; i < n; i++) {
         std::cout << arr[i] << " ";
     }
     std::cout << "\n";
 
-    // Очищаємо пам'ять
     delete[] arr;
     return 0;
 }
